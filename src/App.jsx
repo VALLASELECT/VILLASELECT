@@ -1,39 +1,30 @@
 import { useState, useEffect, useRef, useCallback } from "react";
 
-// ── EMAILJS CONFIG ────────────────────────────────────────────────────────────
-// Remplacez par vos clés EmailJS (emailjs.com) pour envoyer les emails
-const EMAILJS_SERVICE_ID = "service_i911rbk";
-const EMAILJS_TEMPLATE_ID = "template_28bfmjo";
-const EMAILJS_PUBLIC_KEY = "9BWg4tcrvyx8ChNcV";
-
+// ── NETLIFY FORMS - Envoi de réservation par email ───────────────────────────
 const sendReservationEmail = async (data) => {
  try {
- await fetch("https://api.emailjs.com/api/v1.0/email/send", {
+ const formData = new URLSearchParams();
+ formData.append("form-name", "reservation");
+ formData.append("client_nom", data.clientNom);
+ formData.append("client_age", data.clientAge);
+ formData.append("client_tel", data.clientTel);
+ formData.append("client_email", data.clientEmail);
+ formData.append("villa_name", data.villaName);
+ formData.append("check_in", data.checkIn);
+ formData.append("check_out", data.checkOut);
+ formData.append("guests", data.guests);
+ formData.append("nights", data.nights);
+ formData.append("total", data.total);
+ formData.append("deposit", data.deposit);
+
+ await fetch("/", {
  method: "POST",
- headers: { "Content-Type": "application/json" },
- body: JSON.stringify({
- service_id: EMAILJS_SERVICE_ID,
- template_id: EMAILJS_TEMPLATE_ID,
- user_id: EMAILJS_PUBLIC_KEY,
- template_params: {
- to_email: "adminvillaselect@gmail.com",
- client_nom: data.clientNom,
- client_age: data.clientAge,
- client_tel: data.clientTel,
- client_email: data.clientEmail,
- villa_name: data.villaName,
- check_in: data.checkIn,
- check_out: data.checkOut,
- guests: data.guests,
- nights: data.nights,
- total: data.total,
- deposit: data.deposit,
- }
- })
+ headers: { "Content-Type": "application/x-www-form-urlencoded" },
+ body: formData.toString()
  });
  return true;
  } catch(e) {
- console.error("EmailJS error:", e);
+ console.error("Netlify Forms error:", e);
  return false;
  }
 };
@@ -569,6 +560,22 @@ export default function App() {
  </footer>
 
  <Toast {...toast} />
+
+ {/* Formulaire caché pour Netlify Forms - NE PAS SUPPRIMER */}
+ <form name="reservation" data-netlify="true" data-netlify-honeypot="bot-field" hidden>
+ <input type="hidden" name="form-name" value="reservation" />
+ <input name="client_nom" />
+ <input name="client_age" />
+ <input name="client_tel" />
+ <input name="client_email" />
+ <input name="villa_name" />
+ <input name="check_in" />
+ <input name="check_out" />
+ <input name="guests" />
+ <input name="nights" />
+ <input name="total" />
+ <input name="deposit" />
+ </form>
  </div>
  );
 }
