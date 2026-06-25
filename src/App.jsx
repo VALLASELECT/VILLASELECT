@@ -332,24 +332,43 @@ export default function App() {
  const [mobileMenu, setMobileMenu] = useState(false);
  const [searchFilters, setSearchFilters] = useState({ destination:"", checkIn:"", checkOut:"", guests:1 });
 
- // ── Chargement initial depuis Supabase ──
+ // ── Chargement initial depuis Supabase + localStorage fallback ──
  useEffect(() => {
- if (!supabaseReady()) { setDbLoading(false); return; }
  const load = async () => {
+ // Charger depuis localStorage d'abord
  try {
- // Charger utilisateurs
+ const localUsers = localStorage.getItem("vs_users");
+ const localRes = localStorage.getItem("vs_reservations");
+ if (localUsers) {
+ const parsed = JSON.parse(localUsers);
+ const merged = [...INITIAL_USERS];
+ parsed.forEach(u => { if (!merged.find(x => x.email === u.email)) merged.push(u); });
+ setUsers(merged);
+ }
+ if (localRes) {
+ const parsed = JSON.parse(localRes);
+ const merged = [...INITIAL_RESERVATIONS];
+ parsed.forEach(r => { if (!merged.find(x => x.id === r.id)) merged.push(r); });
+ setReservations(merged);
+ }
+ } catch(e) { console.error("localStorage error:", e); }
+
+ // Puis synchroniser avec Supabase
+ if (!supabaseReady()) { setDbLoading(false); return; }
+ try {
  const { data: dbUsers } = await sb.from("users").select("*");
  if (dbUsers && dbUsers.length > 0) {
  const merged = [...INITIAL_USERS];
  dbUsers.forEach(u => { if (!merged.find(x => x.email === u.email)) merged.push(u); });
  setUsers(merged);
+ localStorage.setItem("vs_users", JSON.stringify(merged));
  }
- // Charger réservations
  const { data: dbRes } = await sb.from("reservations").select("*");
  if (dbRes && dbRes.length > 0) {
  const merged = [...INITIAL_RESERVATIONS];
  dbRes.forEach(r => { if (!merged.find(x => x.id === r.id)) merged.push(r); });
  setReservations(merged);
+ localStorage.setItem("vs_reservations", JSON.stringify(merged));
  }
  } catch(e) { console.error("Supabase load error:", e); }
  setDbLoading(false);
@@ -359,12 +378,30 @@ export default function App() {
 
  // ── Sauvegarde users dans Supabase ──
  const saveUserToDB = async (user) => {
+ // Sauvegarder dans localStorage immédiatement
+ try {
+ const existing = JSON.parse(localStorage.getItem("vs_users") || "[]");
+ if (!existing.find(u => u.email === user.email)) {
+ existing.push(user);
+ localStorage.setItem("vs_users", JSON.stringify(existing));
+ }
+ } catch(e) { console.error("localStorage user save error:", e); }
+ // Puis dans Supabase
  if (!supabaseReady()) return;
  try { await sb.from("users").insert(user); } catch(e) { console.error(e); }
  };
 
  // ── Sauvegarde réservation dans Supabase ──
  const saveReservationToDB = async (res) => {
+ // Sauvegarder dans localStorage immédiatement
+ try {
+ const existing = JSON.parse(localStorage.getItem("vs_reservations") || "[]");
+ if (!existing.find(r => r.id === res.id)) {
+ existing.push(res);
+ localStorage.setItem("vs_reservations", JSON.stringify(existing));
+ }
+ } catch(e) { console.error("localStorage save error:", e); }
+ // Puis dans Supabase
  if (!supabaseReady()) return;
  try { await sb.from("reservations").insert(res); } catch(e) { console.error(e); }
  };
