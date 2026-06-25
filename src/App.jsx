@@ -1,30 +1,70 @@
 import { useState, useEffect, useRef, useCallback } from "react";
 
-// ── NETLIFY FORMS - Envoi de réservation par email ───────────────────────────
+// ── FORMSPREE - Envoi de réservation par email ───────────────────────────────
+const FORMSPREE_URL = "https://formspree.io/f/mnjkjedp";
+
+// Email à l'admin quand client réserve
 const sendReservationEmail = async (data) => {
  try {
- const formData = new URLSearchParams();
- formData.append("form-name", "reservation");
- formData.append("client_nom", data.clientNom);
- formData.append("client_age", data.clientAge);
- formData.append("client_tel", data.clientTel);
- formData.append("client_email", data.clientEmail);
- formData.append("villa_name", data.villaName);
- formData.append("check_in", data.checkIn);
- formData.append("check_out", data.checkOut);
- formData.append("guests", data.guests);
- formData.append("nights", data.nights);
- formData.append("total", data.total);
- formData.append("deposit", data.deposit);
-
- await fetch("/", {
+ const response = await fetch(FORMSPREE_URL, {
  method: "POST",
- headers: { "Content-Type": "application/x-www-form-urlencoded" },
- body: formData.toString()
+ headers: { 
+ "Content-Type": "application/json",
+ "Accept": "application/json"
+ },
+ body: JSON.stringify({
+ "Nom complet": data.clientNom,
+ "Âge": data.clientAge,
+ "Téléphone": data.clientTel,
+ "Email client": data.clientEmail,
+ "Villa": data.villaName,
+ "Date arrivée": data.checkIn,
+ "Date départ": data.checkOut,
+ "Voyageurs": data.guests,
+ "Nuits": data.nights,
+ "Total séjour": data.total,
+ "Acompte à recevoir": data.deposit,
+ "_subject": " Nouvelle réservation – " + data.villaName,
+ "_replyto": data.clientEmail,
+ })
  });
- return true;
+ const result = await response.json();
+ return result.ok;
  } catch(e) {
- console.error("Netlify Forms error:", e);
+ console.error("Formspree error:", e);
+ return false;
+ }
+};
+
+// Email de confirmation au client quand admin confirme
+const sendConfirmationToClient = async (res) => {
+ try {
+ const response = await fetch(FORMSPREE_URL, {
+ method: "POST",
+ headers: {
+ "Content-Type": "application/json",
+ "Accept": "application/json"
+ },
+ body: JSON.stringify({
+ "Type": "CONFIRMATION DE RÉSERVATION",
+ "Pour": res.clientEmail || "client",
+ "Nom client": res.clientNom || res.villaName,
+ "Villa": res.villaName,
+ "Date arrivée": res.checkIn,
+ "Date départ": res.checkOut,
+ "Voyageurs": res.guests,
+ "Total séjour": res.totalPrice + " €",
+ "Acompte payé": res.deposit + " €",
+ "Reste à payer": res.deposit + " €",
+ "_subject": " Réservation confirmée – " + res.villaName + " | Villaselect",
+ "_replyto": res.clientEmail || "adminvillaselect@gmail.com",
+ "Message": "Bonjour " + (res.clientNom || "cher client") + ", votre réservation pour " + res.villaName + " du " + res.checkIn + " au " + res.checkOut + " est confirmée ! Le solde de " + res.deposit + " € sera à régler à l'arrivée. À bientôt ! – Villaselect",
+ })
+ });
+ const result = await response.json();
+ return result.ok;
+ } catch(e) {
+ console.error("Confirmation email error:", e);
  return false;
  }
 };
@@ -561,21 +601,7 @@ export default function App() {
 
  <Toast {...toast} />
 
- {/* Formulaire caché pour Netlify Forms - NE PAS SUPPRIMER */}
- <form name="reservation" data-netlify="true" data-netlify-honeypot="bot-field" hidden>
- <input type="hidden" name="form-name" value="reservation" />
- <input name="client_nom" />
- <input name="client_age" />
- <input name="client_tel" />
- <input name="client_email" />
- <input name="villa_name" />
- <input name="check_in" />
- <input name="check_out" />
- <input name="guests" />
- <input name="nights" />
- <input name="total" />
- <input name="deposit" />
- </form>
+
  </div>
  );
 }
@@ -1451,7 +1477,18 @@ function AdminPage({ villas, setVillas, reservations, setReservations, users, se
  if (supabaseReady()) {
  try { await sb.from("reservations").update({ status }, { id }); } catch(e) { console.error(e); }
  }
+ // Envoyer email de confirmation au client
+ if (status === "confirmed") {
+ const res = reservations.find(r => r.id === id);
+ if (res) {
+ await sendConfirmationToClient(res);
+ showToast(" Réservation confirmée ! Email envoyé au client.");
+ }
+ } else if (status === "cancelled") {
+ showToast("Réservation annulée.");
+ } else {
  showToast("Statut mis à jour.");
+ }
  };
 
  const adminTabs = [
