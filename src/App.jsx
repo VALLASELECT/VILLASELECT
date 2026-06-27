@@ -145,41 +145,214 @@ const CardLogos = {
 // ── mock data ─────────────────────────────────────────────────────────────────
 const INITIAL_VILLAS = [
  {
- id: 1, name: "Villa Soleil d'Or", city: "Cannes", price: 420,
+ id: 1, name: "Villa Soleil d'Or", city: "Cannes", price: 350,
  bedrooms: 4, bathrooms: 3, capacity: 8,
- wifi: true, ac: true, pool: true, parking: true,
- available: true,
- description: "Magnifique villa avec vue mer panoramique, piscine chauffée et jardin privatif.",
- photos: ["https://images.unsplash.com/photo-1613490493576-7fde63acd811?w=800&q=80",
- "https://images.unsplash.com/photo-1512917774080-9991f1c4c750?w=800&q=80",
- "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=800&q=80"]
+ wifi: true, ac: true, pool: true, parking: true, available: true,
+ description: "Magnifique villa avec vue mer panoramique à Cannes, piscine chauffée, terrasse xxl et jardin privatif. Idéale pour familles ou groupes d'amis.",
+ photos: ["https://images.unsplash.com/photo-1613490493576-7fde63acd811?w=800&q=80","https://images.unsplash.com/photo-1512917774080-9991f1c4c750?w=800&q=80"]
  },
  {
- id: 2, name: "Appartement Azure", city: "Nice", price: 180,
- bedrooms: 2, bathrooms: 1, capacity: 4,
- wifi: true, ac: true, pool: false, parking: true,
- available: true,
- description: "Appartement moderne en plein cœur de Nice, à 5 min de la Promenade des Anglais.",
- photos: ["https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?w=800&q=80",
- "https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?w=800&q=80"]
- },
- {
- id: 3, name: "Villa Les Pins", city: "Saint-Tropez", price: 680,
- bedrooms: 6, bathrooms: 4, capacity: 12,
- wifi: true, ac: true, pool: true, parking: true,
- available: true,
- description: "Demeure de prestige au cœur des pins, terrasse xxl et piscine à débordement.",
- photos: ["https://images.unsplash.com/photo-1580587771525-78b9dba3b914?w=800&q=80",
- "https://images.unsplash.com/photo-1464146072230-91cabc968266?w=800&q=80"]
- },
- {
- id: 4, name: "Mas Provençal", city: "Aix-en-Provence", price: 310,
+ id: 2, name: "Villa Méditerranée", city: "Nice", price: 180,
  bedrooms: 3, bathrooms: 2, capacity: 6,
- wifi: true, ac: false, pool: true, parking: true,
- available: false,
- description: "Authentique mas provençal avec oliviers centenaires et piscine naturelle.",
- photos: ["https://images.unsplash.com/photo-1523217582562-09d0def993a6?w=800&q=80",
- "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=800&q=80"]
+ wifi: true, ac: true, pool: true, parking: true, available: true,
+ description: "Superbe villa avec piscine privée à 10 min de la Promenade des Anglais. Vue imprenable sur la mer, jardin fleuri, climatisation dans toutes les pièces.",
+ photos: ["https://images.unsplash.com/photo-1580587771525-78b9dba3b914?w=800&q=80","https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?w=800&q=80"]
+ },
+ {
+ id: 3, name: "Villa Les Pins", city: "Saint-Tropez", price: 610,
+ bedrooms: 6, bathrooms: 4, capacity: 12,
+ wifi: true, ac: true, pool: true, parking: true, available: true,
+ description: "Demeure de prestige au cœur des pins de Saint-Tropez. Piscine à débordement, grand salon avec cheminée, terrasse panoramique sur la baie.",
+ photos: ["https://images.unsplash.com/photo-1564013799919-ab600027ffc6?w=800&q=80","https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=800&q=80"]
+ },
+ {
+ id: 4, name: "Mas Provençal", city: "Aix-en-Provence", price: 240,
+ bedrooms: 3, bathrooms: 2, capacity: 6,
+ wifi: true, ac: true, pool: true, parking: true, available: true,
+ description: "Authentique mas provençal du XVIIIe siècle avec oliviers centenaires, piscine chauffée et vue sur le Mont Sainte-Victoire. Calme absolu.",
+ photos: ["https://images.unsplash.com/photo-1523217582562-09d0def993a6?w=800&q=80","https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=800&q=80"]
+ },
+ {
+ id: 5, name: "Villa Côte Bleue", city: "Marseille", price: 220,
+ bedrooms: 4, bathrooms: 2, capacity: 8,
+ wifi: true, ac: true, pool: true, parking: true, available: true,
+ description: "Villa moderne face aux calanques de Marseille, piscine avec vue mer, accès direct à la plage privée. Décoration contemporaine haut de gamme.",
+ photos: ["https://images.unsplash.com/photo-1571896349842-33c89424de2d?w=800&q=80","https://images.unsplash.com/photo-1582268611958-ebfd161ef9cf?w=800&q=80"]
+ },
+ {
+ id: 6, name: "Bastide du Luberon", city: "Gordes", price: 280,
+ bedrooms: 5, bathrooms: 3, capacity: 10,
+ wifi: true, ac: true, pool: true, parking: true, available: true,
+ description: "Splendide bastide en pierre au cœur du Luberon, vue sur les champs de lavande, piscine chauffée, grand terrain arboré. Village de Gordes à 5 min.",
+ photos: ["https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=800&q=80","https://images.unsplash.com/photo-1512917774080-9991f1c4c750?w=800&q=80"]
+ },
+ {
+ id: 7, name: "Villa Azur", city: "Antibes", price: 320,
+ bedrooms: 4, bathrooms: 3, capacity: 8,
+ wifi: true, ac: true, pool: true, parking: true, available: true,
+ description: "Villa luxueuse à Antibes avec piscine chauffée, jardin méditerranéen, terrasse avec vue sur mer. À 5 min des plages et du vieil Antibes.",
+ photos: ["https://images.unsplash.com/photo-1613490493576-7fde63acd811?w=800&q=80","https://images.unsplash.com/photo-1564013799919-ab600027ffc6?w=800&q=80"]
+ },
+ {
+ id: 8, name: "Maison des Vignes", city: "Bordeaux", price: 160,
+ bedrooms: 3, bathrooms: 2, capacity: 6,
+ wifi: true, ac: false, pool: true, parking: true, available: true,
+ description: "Charmante maison entourée de vignes bordelaises, piscine privée, cave à vin, vélos disponibles. Idéale pour découvrir les châteaux de la région.",
+ photos: ["https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=800&q=80","https://images.unsplash.com/photo-1523217582562-09d0def993a6?w=800&q=80"]
+ },
+ {
+ id: 9, name: "Villa Basque", city: "Biarritz", price: 270,
+ bedrooms: 4, bathrooms: 3, capacity: 8,
+ wifi: true, ac: false, pool: true, parking: true, available: true,
+ description: "Belle villa de style basque à Biarritz, piscine chauffée, terrasse avec vue sur l'océan Atlantique. Plage Grande Côte à 10 min à pied.",
+ photos: ["https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=800&q=80","https://images.unsplash.com/photo-1571896349842-33c89424de2d?w=800&q=80"]
+ },
+ {
+ id: 10, name: "Villa Corse du Sud", city: "Porto-Vecchio", price: 390,
+ bedrooms: 5, bathrooms: 3, capacity: 10,
+ wifi: true, ac: true, pool: true, parking: true, available: true,
+ description: "Villa d'exception en Corse du Sud, piscine à débordement sur la mer, plage de Palombaggia à 5 min, jardin tropical luxuriant. Vue mer imprenable.",
+ photos: ["https://images.unsplash.com/photo-1580587771525-78b9dba3b914?w=800&q=80","https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=800&q=80"]
+ },
+ {
+ id: 11, name: "Chalet Alpin", city: "Chamonix", price: 310,
+ bedrooms: 4, bathrooms: 2, capacity: 8,
+ wifi: true, ac: false, pool: false, parking: true, available: true,
+ description: "Magnifique chalet en bois face au Mont-Blanc, jacuzzi extérieur, sauna, cheminée. Idéal été comme hiver pour profiter des montagnes.",
+ photos: ["https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?w=800&q=80","https://images.unsplash.com/photo-1564013799919-ab600027ffc6?w=800&q=80"]
+ },
+ {
+ id: 12, name: "Villa Belle Époque", city: "Deauville", price: 230,
+ bedrooms: 4, bathrooms: 3, capacity: 8,
+ wifi: true, ac: false, pool: false, parking: true, available: true,
+ description: "Villa normande de caractère à Deauville, jardin fleuri, grande terrasse, à 5 min des planches et des célèbres plages normandes.",
+ photos: ["https://images.unsplash.com/photo-1523217582562-09d0def993a6?w=800&q=80","https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?w=800&q=80"]
+ },
+ {
+ id: 13, name: "Villa Languedoc", city: "Montpellier", price: 175,
+ bedrooms: 3, bathrooms: 2, capacity: 6,
+ wifi: true, ac: true, pool: true, parking: true, available: true,
+ description: "Jolie villa avec piscine privée à 15 min de Montpellier et 20 min des plages de la Grande-Motte. Jardin avec barbecue, idéale en famille.",
+ photos: ["https://images.unsplash.com/photo-1582268611958-ebfd161ef9cf?w=800&q=80","https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=800&q=80"]
+ },
+ {
+ id: 14, name: "Maison Bretonne", city: "Quiberon", price: 145,
+ bedrooms: 3, bathrooms: 1, capacity: 6,
+ wifi: true, ac: false, pool: false, parking: true, available: true,
+ description: "Authentique maison bretonne à Quiberon, jardin avec accès direct à la mer, terrasse ensoleillée. Idéale pour séjour nature et randonnée.",
+ photos: ["https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=800&q=80","https://images.unsplash.com/photo-1571896349842-33c89424de2d?w=800&q=80"]
+ },
+ {
+ id: 15, name: "Villa Tropézienne", city: "Ramatuelle", price: 520,
+ bedrooms: 5, bathrooms: 4, capacity: 10,
+ wifi: true, ac: true, pool: true, parking: true, available: true,
+ description: "Villa de standing à Ramatuelle, à 2 km des plages de Pampelonne, piscine chauffée, cuisine extérieure, vue sur les vignes et la mer.",
+ photos: ["https://images.unsplash.com/photo-1613490493576-7fde63acd811?w=800&q=80","https://images.unsplash.com/photo-1580587771525-78b9dba3b914?w=800&q=80"]
+ },
+ {
+ id: 16, name: "Domaine du Verdon", city: "Moustiers-Sainte-Marie", price: 195,
+ bedrooms: 4, bathrooms: 2, capacity: 8,
+ wifi: true, ac: true, pool: true, parking: true, available: true,
+ description: "Domaine provençal aux portes des gorges du Verdon, piscine naturelle, jardin arboré de 2 hectares, vue sur les falaises. Calme et sérénité garantis.",
+ photos: ["https://images.unsplash.com/photo-1564013799919-ab600027ffc6?w=800&q=80","https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=800&q=80"]
+ },
+ {
+ id: 17, name: "Villa Cap Ferret", city: "Cap Ferret", price: 285,
+ bedrooms: 4, bathrooms: 2, capacity: 8,
+ wifi: true, ac: false, pool: false, parking: true, available: true,
+ description: "Superbe villa en bois au Cap Ferret, face au bassin d'Arcachon, terrasse sur pilotis, embarcadère privé. Vue panoramique sur la dune du Pilat.",
+ photos: ["https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?w=800&q=80","https://images.unsplash.com/photo-1523217582562-09d0def993a6?w=800&q=80"]
+ },
+ {
+ id: 18, name: "Villa Riviera", city: "Menton", price: 260,
+ bedrooms: 3, bathrooms: 2, capacity: 6,
+ wifi: true, ac: true, pool: true, parking: true, available: true,
+ description: "Villa italianisante à Menton avec piscine privée, jardins en terrasses avec citronniers, vue mer exceptionnelle. À 2 km de l'Italie.",
+ photos: ["https://images.unsplash.com/photo-1582268611958-ebfd161ef9cf?w=800&q=80","https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=800&q=80"]
+ },
+ {
+ id: 19, name: "Mas du Roussillon", city: "Perpignan", price: 155,
+ bedrooms: 4, bathrooms: 2, capacity: 8,
+ wifi: true, ac: true, pool: true, parking: true, available: true,
+ description: "Mas catalan avec piscine à débordement, vue sur les Pyrénées, jardin avec palmiers et oliviers. Plages de Canet à 15 min, Espagne à 30 min.",
+ photos: ["https://images.unsplash.com/photo-1571896349842-33c89424de2d?w=800&q=80","https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?w=800&q=80"]
+ },
+ {
+ id: 20, name: "Villa Côte d'Opale", city: "Le Touquet", price: 165,
+ bedrooms: 4, bathrooms: 2, capacity: 8,
+ wifi: true, ac: false, pool: false, parking: true, available: true,
+ description: "Belle villa anglo-normande au Touquet, à 5 min de la plage, jardin avec barbecue, sauna intérieur. Idéale pour week-ends en famille ou entre amis.",
+ photos: ["https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=800&q=80","https://images.unsplash.com/photo-1564013799919-ab600027ffc6?w=800&q=80"]
+ },
+ {
+ id: 21, name: "Villa Dordogne", city: "Sarlat-la-Canéda", price: 175,
+ bedrooms: 5, bathrooms: 3, capacity: 10,
+ wifi: true, ac: false, pool: true, parking: true, available: true,
+ description: "Magnifique maison périgourdine en pierre avec piscine privée, grande terrasse ombragée. Au cœur du Périgord Noir, à 5 min de Sarlat.",
+ photos: ["https://images.unsplash.com/photo-1523217582562-09d0def993a6?w=800&q=80","https://images.unsplash.com/photo-1580587771525-78b9dba3b914?w=800&q=80"]
+ },
+ {
+ id: 22, name: "Bastide Aixoise", city: "Aix-en-Provence", price: 290,
+ bedrooms: 5, bathrooms: 3, capacity: 10,
+ wifi: true, ac: true, pool: true, parking: true, available: true,
+ description: "Élégante bastide du XVIIe siècle restaurée avec goût, piscine chauffée, cuisine provençale entièrement équipée, grand parc arboré de 3 hectares.",
+ photos: ["https://images.unsplash.com/photo-1613490493576-7fde63acd811?w=800&q=80","https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=800&q=80"]
+ },
+ {
+ id: 23, name: "Villa Bord de Mer", city: "La Rochelle", price: 195,
+ bedrooms: 4, bathrooms: 2, capacity: 8,
+ wifi: true, ac: false, pool: false, parking: true, available: true,
+ description: "Villa contemporaine face à l'océan Atlantique à La Rochelle, grande terrasse vue mer, jardin clos. À 5 min du Vieux-Port et des îles.",
+ photos: ["https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=800&q=80","https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?w=800&q=80"]
+ },
+ {
+ id: 24, name: "Château de Campagne", city: "Tours", price: 340,
+ bedrooms: 6, bathrooms: 4, capacity: 12,
+ wifi: true, ac: false, pool: true, parking: true, available: true,
+ description: "Petit château de la Loire avec piscine, parc de 5 hectares, orangerie. Décoration d'époque raffinée, à 15 min des plus beaux châteaux de la Loire.",
+ photos: ["https://images.unsplash.com/photo-1564013799919-ab600027ffc6?w=800&q=80","https://images.unsplash.com/photo-1571896349842-33c89424de2d?w=800&q=80"]
+ },
+ {
+ id: 25, name: "Villa Camargue", city: "Saintes-Maries-de-la-Mer", price: 185,
+ bedrooms: 3, bathrooms: 2, capacity: 6,
+ wifi: true, ac: true, pool: true, parking: true, available: true,
+ description: "Villa de charme en pleine Camargue, piscine privée, chevaux en liberté à proximité, flamants roses visibles depuis la terrasse. Nature préservée.",
+ photos: ["https://images.unsplash.com/photo-1582268611958-ebfd161ef9cf?w=800&q=80","https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?w=800&q=80"]
+ },
+ {
+ id: 26, name: "Villa Alsacienne", city: "Colmar", price: 140,
+ bedrooms: 3, bathrooms: 2, capacity: 6,
+ wifi: true, ac: false, pool: false, parking: true, available: true,
+ description: "Charmante maison alsacienne à colombages à Colmar, jardin fleuri, cave à vins, idéale pour découvrir la Route des Vins d'Alsace et ses marchés.",
+ photos: ["https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=800&q=80","https://images.unsplash.com/photo-1523217582562-09d0def993a6?w=800&q=80"]
+ },
+ {
+ id: 27, name: "Villa Île de Ré", city: "Saint-Martin-de-Ré", price: 265,
+ bedrooms: 4, bathrooms: 2, capacity: 8,
+ wifi: true, ac: false, pool: true, parking: true, available: true,
+ description: "Villa de charme sur l'Île de Ré, piscine chauffée, jardin avec oliviers et lavande, vélos fournis. À 5 min des plages et des vignes de l'île.",
+ photos: ["https://images.unsplash.com/photo-1580587771525-78b9dba3b914?w=800&q=80","https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=800&q=80"]
+ },
+ {
+ id: 28, name: "Mas des Alpilles", city: "Les Baux-de-Provence", price: 310,
+ bedrooms: 4, bathrooms: 3, capacity: 8,
+ wifi: true, ac: true, pool: true, parking: true, available: true,
+ description: "Mas provençal de prestige au pied des Alpilles, piscine chauffée, oliveraie centenaire, terrasse panoramique. Village des Baux-de-Provence à 2 km.",
+ photos: ["https://images.unsplash.com/photo-1613490493576-7fde63acd811?w=800&q=80","https://images.unsplash.com/photo-1564013799919-ab600027ffc6?w=800&q=80"]
+ },
+ {
+ id: 29, name: "Villa Landaise", city: "Hossegor", price: 235,
+ bedrooms: 4, bathrooms: 2, capacity: 8,
+ wifi: true, ac: false, pool: true, parking: true, available: true,
+ description: "Belle villa landaise à Hossegor, piscine chauffée, jardin de pins, à 10 min des plages de surf. Style contemporain avec matériaux naturels.",
+ photos: ["https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?w=800&q=80","https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=800&q=80"]
+ },
+ {
+ id: 30, name: "Villa Corse du Nord", city: "Calvi", price: 345,
+ bedrooms: 4, bathrooms: 3, capacity: 8,
+ wifi: true, ac: true, pool: true, parking: true, available: true,
+ description: "Villa exceptionnelle à Calvi avec piscine à débordement sur la mer, accès direct à la plage, jardin tropical. Vue sur la citadelle génoise.",
+ photos: ["https://images.unsplash.com/photo-1571896349842-33c89424de2d?w=800&q=80","https://images.unsplash.com/photo-1582268611958-ebfd161ef9cf?w=800&q=80"]
  },
 ];
 
@@ -537,21 +710,10 @@ export default function App() {
  <button className="btn-primary btn-sm" onClick={() => nav("register")}>S'inscrire</button>
  </div>
  )}
- <button className="hide-desktop" style={{ background:"none", border:"none", padding:8 }} onClick={() => setMobileMenu(!mobileMenu)}>
- <Icon name="menu" />
- </button>
- <button style={{ display:"none" }} className="show-mobile" onClick={() => setMobileMenu(!mobileMenu)}>
- <Icon name="menu" />
- </button>
- <button style={{ background:"none", border:"none", padding:8, display:"none" }} id="mobileBtn" onClick={() => setMobileMenu(!mobileMenu)}>
- <Icon name="menu" />
- </button>
- </div>
- {/* real mobile trigger */}
- <style>{`@media(max-width:768px){#mobileMenuBtn{display:flex!important}}`}</style>
- <button id="mobileMenuBtn" style={{ display:"none", background:"none", border:"none", padding:8 }} onClick={() => setMobileMenu(!mobileMenu)}>
+ <button style={{ background:"none", border:"none", padding:8 }} onClick={() => setMobileMenu(!mobileMenu)}>
  <Icon name="menu" size={24} />
  </button>
+ </div>
  </div>
  {/* mobile menu */}
  {mobileMenu && (
