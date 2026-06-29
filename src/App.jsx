@@ -147,212 +147,21 @@ const INITIAL_VILLAS = [
  {
  id: 1, name: "Villa Soleil d'Or", city: "Cannes", price: 350,
  bedrooms: 4, bathrooms: 3, capacity: 8,
- wifi: true, ac: true, pool: true, parking: true, available: true,
- description: "Magnifique villa avec vue mer panoramique à Cannes, piscine chauffée, terrasse xxl et jardin privatif. Idéale pour familles ou groupes d'amis.",
- photos: ["https://images.unsplash.com/photo-1613490493576-7fde63acd811?w=800&q=80","https://images.unsplash.com/photo-1512917774080-9991f1c4c750?w=800&q=80"]
+ wifi: true, ac: true, pool: true, parking: true,
+ available: true,
+ description: "Magnifique villa avec vue mer panoramique, piscine chauffée et jardin privatif. Idéale pour des vacances en famille ou entre amis sur la Côte d'Azur.",
+ photos: ["https://images.unsplash.com/photo-1613490493576-7fde63acd811?w=800&q=80",
+ "https://images.unsplash.com/photo-1512917774080-9991f1c4c750?w=800&q=80",
+ "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=800&q=80"]
  },
  {
- id: 2, name: "Villa Méditerranée", city: "Nice", price: 180,
- bedrooms: 3, bathrooms: 2, capacity: 6,
- wifi: true, ac: true, pool: true, parking: true, available: true,
- description: "Superbe villa avec piscine privée à 10 min de la Promenade des Anglais. Vue imprenable sur la mer, jardin fleuri, climatisation dans toutes les pièces.",
- photos: ["https://images.unsplash.com/photo-1580587771525-78b9dba3b914?w=800&q=80","https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?w=800&q=80"]
- },
- {
- id: 3, name: "Villa Les Pins", city: "Saint-Tropez", price: 610,
- bedrooms: 6, bathrooms: 4, capacity: 12,
- wifi: true, ac: true, pool: true, parking: true, available: true,
- description: "Demeure de prestige au cœur des pins de Saint-Tropez. Piscine à débordement, grand salon avec cheminée, terrasse panoramique sur la baie.",
- photos: ["https://images.unsplash.com/photo-1564013799919-ab600027ffc6?w=800&q=80","https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=800&q=80"]
- },
- {
- id: 4, name: "Mas Provençal", city: "Aix-en-Provence", price: 240,
- bedrooms: 3, bathrooms: 2, capacity: 6,
- wifi: true, ac: true, pool: true, parking: true, available: true,
- description: "Authentique mas provençal du XVIIIe siècle avec oliviers centenaires, piscine chauffée et vue sur le Mont Sainte-Victoire. Calme absolu.",
- photos: ["https://images.unsplash.com/photo-1523217582562-09d0def993a6?w=800&q=80","https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=800&q=80"]
- },
- {
- id: 5, name: "Villa Côte Bleue", city: "Marseille", price: 220,
- bedrooms: 4, bathrooms: 2, capacity: 8,
- wifi: true, ac: true, pool: true, parking: true, available: true,
- description: "Villa moderne face aux calanques de Marseille, piscine avec vue mer, accès direct à la plage privée. Décoration contemporaine haut de gamme.",
- photos: ["https://images.unsplash.com/photo-1571896349842-33c89424de2d?w=800&q=80","https://images.unsplash.com/photo-1582268611958-ebfd161ef9cf?w=800&q=80"]
- },
- {
- id: 6, name: "Bastide du Luberon", city: "Gordes", price: 280,
- bedrooms: 5, bathrooms: 3, capacity: 10,
- wifi: true, ac: true, pool: true, parking: true, available: true,
- description: "Splendide bastide en pierre au cœur du Luberon, vue sur les champs de lavande, piscine chauffée, grand terrain arboré. Village de Gordes à 5 min.",
- photos: ["https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=800&q=80","https://images.unsplash.com/photo-1512917774080-9991f1c4c750?w=800&q=80"]
- },
- {
- id: 7, name: "Villa Azur", city: "Antibes", price: 320,
- bedrooms: 4, bathrooms: 3, capacity: 8,
- wifi: true, ac: true, pool: true, parking: true, available: true,
- description: "Villa luxueuse à Antibes avec piscine chauffée, jardin méditerranéen, terrasse avec vue sur mer. À 5 min des plages et du vieil Antibes.",
- photos: ["https://images.unsplash.com/photo-1613490493576-7fde63acd811?w=800&q=80","https://images.unsplash.com/photo-1564013799919-ab600027ffc6?w=800&q=80"]
- },
- {
- id: 8, name: "Maison des Vignes", city: "Bordeaux", price: 160,
- bedrooms: 3, bathrooms: 2, capacity: 6,
- wifi: true, ac: false, pool: true, parking: true, available: true,
- description: "Charmante maison entourée de vignes bordelaises, piscine privée, cave à vin, vélos disponibles. Idéale pour découvrir les châteaux de la région.",
- photos: ["https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=800&q=80","https://images.unsplash.com/photo-1523217582562-09d0def993a6?w=800&q=80"]
- },
- {
- id: 9, name: "Villa Basque", city: "Biarritz", price: 270,
- bedrooms: 4, bathrooms: 3, capacity: 8,
- wifi: true, ac: false, pool: true, parking: true, available: true,
- description: "Belle villa de style basque à Biarritz, piscine chauffée, terrasse avec vue sur l'océan Atlantique. Plage Grande Côte à 10 min à pied.",
- photos: ["https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=800&q=80","https://images.unsplash.com/photo-1571896349842-33c89424de2d?w=800&q=80"]
- },
- {
- id: 10, name: "Villa Corse du Sud", city: "Porto-Vecchio", price: 390,
- bedrooms: 5, bathrooms: 3, capacity: 10,
- wifi: true, ac: true, pool: true, parking: true, available: true,
- description: "Villa d'exception en Corse du Sud, piscine à débordement sur la mer, plage de Palombaggia à 5 min, jardin tropical luxuriant. Vue mer imprenable.",
- photos: ["https://images.unsplash.com/photo-1580587771525-78b9dba3b914?w=800&q=80","https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=800&q=80"]
- },
- {
- id: 11, name: "Chalet Alpin", city: "Chamonix", price: 310,
- bedrooms: 4, bathrooms: 2, capacity: 8,
- wifi: true, ac: false, pool: false, parking: true, available: true,
- description: "Magnifique chalet en bois face au Mont-Blanc, jacuzzi extérieur, sauna, cheminée. Idéal été comme hiver pour profiter des montagnes.",
- photos: ["https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?w=800&q=80","https://images.unsplash.com/photo-1564013799919-ab600027ffc6?w=800&q=80"]
- },
- {
- id: 12, name: "Villa Belle Époque", city: "Deauville", price: 230,
- bedrooms: 4, bathrooms: 3, capacity: 8,
- wifi: true, ac: false, pool: false, parking: true, available: true,
- description: "Villa normande de caractère à Deauville, jardin fleuri, grande terrasse, à 5 min des planches et des célèbres plages normandes.",
- photos: ["https://images.unsplash.com/photo-1523217582562-09d0def993a6?w=800&q=80","https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?w=800&q=80"]
- },
- {
- id: 13, name: "Villa Languedoc", city: "Montpellier", price: 175,
- bedrooms: 3, bathrooms: 2, capacity: 6,
- wifi: true, ac: true, pool: true, parking: true, available: true,
- description: "Jolie villa avec piscine privée à 15 min de Montpellier et 20 min des plages de la Grande-Motte. Jardin avec barbecue, idéale en famille.",
- photos: ["https://images.unsplash.com/photo-1582268611958-ebfd161ef9cf?w=800&q=80","https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=800&q=80"]
- },
- {
- id: 14, name: "Maison Bretonne", city: "Quiberon", price: 145,
- bedrooms: 3, bathrooms: 1, capacity: 6,
- wifi: true, ac: false, pool: false, parking: true, available: true,
- description: "Authentique maison bretonne à Quiberon, jardin avec accès direct à la mer, terrasse ensoleillée. Idéale pour séjour nature et randonnée.",
- photos: ["https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=800&q=80","https://images.unsplash.com/photo-1571896349842-33c89424de2d?w=800&q=80"]
- },
- {
- id: 15, name: "Villa Tropézienne", city: "Ramatuelle", price: 520,
- bedrooms: 5, bathrooms: 4, capacity: 10,
- wifi: true, ac: true, pool: true, parking: true, available: true,
- description: "Villa de standing à Ramatuelle, à 2 km des plages de Pampelonne, piscine chauffée, cuisine extérieure, vue sur les vignes et la mer.",
- photos: ["https://images.unsplash.com/photo-1613490493576-7fde63acd811?w=800&q=80","https://images.unsplash.com/photo-1580587771525-78b9dba3b914?w=800&q=80"]
- },
- {
- id: 16, name: "Domaine du Verdon", city: "Moustiers-Sainte-Marie", price: 195,
- bedrooms: 4, bathrooms: 2, capacity: 8,
- wifi: true, ac: true, pool: true, parking: true, available: true,
- description: "Domaine provençal aux portes des gorges du Verdon, piscine naturelle, jardin arboré de 2 hectares, vue sur les falaises. Calme et sérénité garantis.",
- photos: ["https://images.unsplash.com/photo-1564013799919-ab600027ffc6?w=800&q=80","https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=800&q=80"]
- },
- {
- id: 17, name: "Villa Cap Ferret", city: "Cap Ferret", price: 285,
- bedrooms: 4, bathrooms: 2, capacity: 8,
- wifi: true, ac: false, pool: false, parking: true, available: true,
- description: "Superbe villa en bois au Cap Ferret, face au bassin d'Arcachon, terrasse sur pilotis, embarcadère privé. Vue panoramique sur la dune du Pilat.",
- photos: ["https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?w=800&q=80","https://images.unsplash.com/photo-1523217582562-09d0def993a6?w=800&q=80"]
- },
- {
- id: 18, name: "Villa Riviera", city: "Menton", price: 260,
- bedrooms: 3, bathrooms: 2, capacity: 6,
- wifi: true, ac: true, pool: true, parking: true, available: true,
- description: "Villa italianisante à Menton avec piscine privée, jardins en terrasses avec citronniers, vue mer exceptionnelle. À 2 km de l'Italie.",
- photos: ["https://images.unsplash.com/photo-1582268611958-ebfd161ef9cf?w=800&q=80","https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=800&q=80"]
- },
- {
- id: 19, name: "Mas du Roussillon", city: "Perpignan", price: 155,
- bedrooms: 4, bathrooms: 2, capacity: 8,
- wifi: true, ac: true, pool: true, parking: true, available: true,
- description: "Mas catalan avec piscine à débordement, vue sur les Pyrénées, jardin avec palmiers et oliviers. Plages de Canet à 15 min, Espagne à 30 min.",
- photos: ["https://images.unsplash.com/photo-1571896349842-33c89424de2d?w=800&q=80","https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?w=800&q=80"]
- },
- {
- id: 20, name: "Villa Côte d'Opale", city: "Le Touquet", price: 165,
- bedrooms: 4, bathrooms: 2, capacity: 8,
- wifi: true, ac: false, pool: false, parking: true, available: true,
- description: "Belle villa anglo-normande au Touquet, à 5 min de la plage, jardin avec barbecue, sauna intérieur. Idéale pour week-ends en famille ou entre amis.",
- photos: ["https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=800&q=80","https://images.unsplash.com/photo-1564013799919-ab600027ffc6?w=800&q=80"]
- },
- {
- id: 21, name: "Villa Dordogne", city: "Sarlat-la-Canéda", price: 175,
- bedrooms: 5, bathrooms: 3, capacity: 10,
- wifi: true, ac: false, pool: true, parking: true, available: true,
- description: "Magnifique maison périgourdine en pierre avec piscine privée, grande terrasse ombragée. Au cœur du Périgord Noir, à 5 min de Sarlat.",
- photos: ["https://images.unsplash.com/photo-1523217582562-09d0def993a6?w=800&q=80","https://images.unsplash.com/photo-1580587771525-78b9dba3b914?w=800&q=80"]
- },
- {
- id: 22, name: "Bastide Aixoise", city: "Aix-en-Provence", price: 290,
- bedrooms: 5, bathrooms: 3, capacity: 10,
- wifi: true, ac: true, pool: true, parking: true, available: true,
- description: "Élégante bastide du XVIIe siècle restaurée avec goût, piscine chauffée, cuisine provençale entièrement équipée, grand parc arboré de 3 hectares.",
- photos: ["https://images.unsplash.com/photo-1613490493576-7fde63acd811?w=800&q=80","https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=800&q=80"]
- },
- {
- id: 23, name: "Villa Bord de Mer", city: "La Rochelle", price: 195,
- bedrooms: 4, bathrooms: 2, capacity: 8,
- wifi: true, ac: false, pool: false, parking: true, available: true,
- description: "Villa contemporaine face à l'océan Atlantique à La Rochelle, grande terrasse vue mer, jardin clos. À 5 min du Vieux-Port et des îles.",
- photos: ["https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=800&q=80","https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?w=800&q=80"]
- },
- {
- id: 24, name: "Château de Campagne", city: "Tours", price: 340,
- bedrooms: 6, bathrooms: 4, capacity: 12,
- wifi: true, ac: false, pool: true, parking: true, available: true,
- description: "Petit château de la Loire avec piscine, parc de 5 hectares, orangerie. Décoration d'époque raffinée, à 15 min des plus beaux châteaux de la Loire.",
- photos: ["https://images.unsplash.com/photo-1564013799919-ab600027ffc6?w=800&q=80","https://images.unsplash.com/photo-1571896349842-33c89424de2d?w=800&q=80"]
- },
- {
- id: 25, name: "Villa Camargue", city: "Saintes-Maries-de-la-Mer", price: 185,
- bedrooms: 3, bathrooms: 2, capacity: 6,
- wifi: true, ac: true, pool: true, parking: true, available: true,
- description: "Villa de charme en pleine Camargue, piscine privée, chevaux en liberté à proximité, flamants roses visibles depuis la terrasse. Nature préservée.",
- photos: ["https://images.unsplash.com/photo-1582268611958-ebfd161ef9cf?w=800&q=80","https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?w=800&q=80"]
- },
- {
- id: 26, name: "Villa Alsacienne", city: "Colmar", price: 140,
- bedrooms: 3, bathrooms: 2, capacity: 6,
- wifi: true, ac: false, pool: false, parking: true, available: true,
- description: "Charmante maison alsacienne à colombages à Colmar, jardin fleuri, cave à vins, idéale pour découvrir la Route des Vins d'Alsace et ses marchés.",
- photos: ["https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=800&q=80","https://images.unsplash.com/photo-1523217582562-09d0def993a6?w=800&q=80"]
- },
- {
- id: 27, name: "Villa Île de Ré", city: "Saint-Martin-de-Ré", price: 265,
- bedrooms: 4, bathrooms: 2, capacity: 8,
- wifi: true, ac: false, pool: true, parking: true, available: true,
- description: "Villa de charme sur l'Île de Ré, piscine chauffée, jardin avec oliviers et lavande, vélos fournis. À 5 min des plages et des vignes de l'île.",
- photos: ["https://images.unsplash.com/photo-1580587771525-78b9dba3b914?w=800&q=80","https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=800&q=80"]
- },
- {
- id: 28, name: "Mas des Alpilles", city: "Les Baux-de-Provence", price: 310,
- bedrooms: 4, bathrooms: 3, capacity: 8,
- wifi: true, ac: true, pool: true, parking: true, available: true,
- description: "Mas provençal de prestige au pied des Alpilles, piscine chauffée, oliveraie centenaire, terrasse panoramique. Village des Baux-de-Provence à 2 km.",
- photos: ["https://images.unsplash.com/photo-1613490493576-7fde63acd811?w=800&q=80","https://images.unsplash.com/photo-1564013799919-ab600027ffc6?w=800&q=80"]
- },
- {
- id: 29, name: "Villa Landaise", city: "Hossegor", price: 235,
- bedrooms: 4, bathrooms: 2, capacity: 8,
- wifi: true, ac: false, pool: true, parking: true, available: true,
- description: "Belle villa landaise à Hossegor, piscine chauffée, jardin de pins, à 10 min des plages de surf. Style contemporain avec matériaux naturels.",
- photos: ["https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?w=800&q=80","https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=800&q=80"]
- },
- {
- id: 30, name: "Villa Corse du Nord", city: "Calvi", price: 345,
- bedrooms: 4, bathrooms: 3, capacity: 8,
- wifi: true, ac: true, pool: true, parking: true, available: true,
- description: "Villa exceptionnelle à Calvi avec piscine à débordement sur la mer, accès direct à la plage, jardin tropical. Vue sur la citadelle génoise.",
- photos: ["https://images.unsplash.com/photo-1571896349842-33c89424de2d?w=800&q=80","https://images.unsplash.com/photo-1582268611958-ebfd161ef9cf?w=800&q=80"]
+ id: 2, name: "Appartement Azure", city: "Nice", price: 110,
+ bedrooms: 2, bathrooms: 1, capacity: 4,
+ wifi: true, ac: true, pool: false, parking: true,
+ available: true,
+ description: "Appartement moderne en plein cœur de Nice, à 5 min de la Promenade des Anglais. Parfait pour un séjour romantique ou en famille.",
+ photos: ["https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?w=800&q=80",
+ "https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?w=800&q=80"]
  },
 ];
 
@@ -504,14 +313,20 @@ export default function App() {
  const [toast, setToast] = useState({ msg:"", type:"success" });
  const [mobileMenu, setMobileMenu] = useState(false);
  const [searchFilters, setSearchFilters] = useState({ destination:"", checkIn:"", checkOut:"", guests:1 });
+ const [selectedVilla, setSelectedVilla] = useState(null);
 
  // ── Chargement initial depuis Supabase + localStorage fallback ──
  useEffect(() => {
  const load = async () => {
  // Charger depuis localStorage d'abord
  try {
+ const localVillas = localStorage.getItem("vs_villas");
  const localUsers = localStorage.getItem("vs_users");
  const localRes = localStorage.getItem("vs_reservations");
+ if (localVillas) {
+ const parsed = JSON.parse(localVillas);
+ if (parsed.length > 0) setVillas(parsed);
+ }
  if (localUsers) {
  const parsed = JSON.parse(localUsers);
  const merged = [...INITIAL_USERS];
@@ -529,6 +344,11 @@ export default function App() {
  // Puis synchroniser avec Supabase
  if (!supabaseReady()) { setDbLoading(false); return; }
  try {
+ const { data: dbVillas } = await sb.from("villas").select("*");
+ if (dbVillas && dbVillas.length > 0) {
+ setVillas(dbVillas);
+ localStorage.setItem("vs_villas", JSON.stringify(dbVillas));
+ }
  const { data: dbUsers } = await sb.from("users").select("*");
  if (dbUsers && dbUsers.length > 0) {
  const merged = [...INITIAL_USERS];
@@ -548,6 +368,39 @@ export default function App() {
  };
  load();
  }, []);
+
+ // ── Sauvegarde villas dans Supabase ──
+ const saveVillaToDB = async (villa) => {
+ try {
+ const existing = JSON.parse(localStorage.getItem("vs_villas") || "[]");
+ const idx = existing.findIndex(v => v.id === villa.id);
+ if (idx > -1) existing[idx] = villa;
+ else existing.push(villa);
+ localStorage.setItem("vs_villas", JSON.stringify(existing));
+ } catch(e) {}
+ if (!supabaseReady()) return;
+ try { await sb.from("villas").insert(villa); } catch(e) { console.error(e); }
+ };
+
+ const updateVillaInDB = async (villa) => {
+ try {
+ const existing = JSON.parse(localStorage.getItem("vs_villas") || "[]");
+ const idx = existing.findIndex(v => v.id === villa.id);
+ if (idx > -1) existing[idx] = villa;
+ localStorage.setItem("vs_villas", JSON.stringify(existing));
+ } catch(e) {}
+ if (!supabaseReady()) return;
+ try { await sb.from("villas").update(villa, { id: villa.id }); } catch(e) { console.error(e); }
+ };
+
+ const deleteVillaFromDB = async (id) => {
+ try {
+ const existing = JSON.parse(localStorage.getItem("vs_villas") || "[]");
+ localStorage.setItem("vs_villas", JSON.stringify(existing.filter(v => v.id !== id)));
+ } catch(e) {}
+ if (!supabaseReady()) return;
+ try { await sb.from("villas").delete({ id }); } catch(e) { console.error(e); }
+ };
 
  // ── Sauvegarde users dans Supabase ──
  const saveUserToDB = async (user) => {
@@ -732,7 +585,12 @@ export default function App() {
  </div>
  )}
  {currentUser && (
- <div style={{ padding:"8px 24px" }}>
+ <div style={{ padding:"8px 24px", display:"flex", flexDirection:"column", gap:8 }}>
+ {currentUser.role === "admin" && (
+ <button className="btn-dark btn-sm" onClick={() => nav("admin")} style={{ display:"flex", alignItems:"center", gap:8 }}>
+ Tableau de bord Admin
+ </button>
+ )}
  <button className="btn-outline btn-sm" onClick={logout}>Déconnexion</button>
  </div>
  )}
@@ -742,12 +600,13 @@ export default function App() {
 
  {/* PAGES */}
  {page === "home" && <HomePage villas={villas} reviews={reviews} nav={nav} searchFilters={searchFilters} setSearchFilters={setSearchFilters} />}
- {page === "locations" && <LocationsPage villas={villas} reviews={reviews} searchFilters={searchFilters} nav={nav} currentUser={currentUser} showToast={showToast} reservations={reservations} setReservations={setReservations} saveReservationToDB={saveReservationToDB} />}
+ {page === "villa-detail" && <VillaDetailPage villa={selectedVilla} nav={nav} currentUser={currentUser} showToast={showToast} reservations={reservations} setReservations={setReservations} saveReservationToDB={saveReservationToDB} />}
+ {page === "locations" && <LocationsPage villas={villas} reviews={reviews} searchFilters={searchFilters} nav={nav} currentUser={currentUser} showToast={showToast} reservations={reservations} setReservations={setReservations} saveReservationToDB={saveReservationToDB} setSelectedVilla={setSelectedVilla} />}
  {page === "reservations" && currentUser && <ReservationsPage reservations={reservations.filter(r => currentUser.role === "admin" || r.userId === currentUser.id)} currentUser={currentUser} setReservations={setReservations} showToast={showToast} updateReservationInDB={updateReservationInDB} />}
  {page === "contact" && <ContactPage showToast={showToast} />}
  {page === "login" && <LoginPage users={users} setCurrentUser={setCurrentUser} nav={nav} showToast={showToast} />}
  {page === "register" && <RegisterPage users={users} setUsers={setUsers} nav={nav} showToast={showToast} saveUserToDB={saveUserToDB} />}
- {page === "admin" && currentUser?.role === "admin" && <AdminPage villas={villas} setVillas={setVillas} reservations={reservations} setReservations={setReservations} users={users} setUsers={setUsers} showToast={showToast} reviews={reviews} setReviews={setReviews} />}
+ {page === "admin" && currentUser?.role === "admin" && <AdminPage villas={villas} setVillas={setVillas} reservations={reservations} setReservations={setReservations} users={users} setUsers={setUsers} showToast={showToast} reviews={reviews} setReviews={setReviews} saveVillaToDB={saveVillaToDB} updateVillaInDB={updateVillaInDB} deleteVillaFromDB={deleteVillaFromDB} />}
 
  {/* Footer */}
  <footer style={{ background:"#5A2E0C", color:"#fff", padding:"48px 24px 24px" }}>
@@ -891,7 +750,7 @@ function HomePage({ villas, reviews, nav, searchFilters, setSearchFilters }) {
  <button className="btn-outline hide-mobile" onClick={() => nav("locations")}>Voir tout <Icon name="arrow" size={14} /></button>
  </div>
  <div style={{ display:"grid", gridTemplateColumns:"repeat(auto-fit,minmax(300px,1fr))", gap:24 }} className="grid-villas">
- {featuredVillas.map(villa => <VillaCard key={villa.id} villa={villa} compact nav={nav} />)}
+ {featuredVillas.map(villa => <VillaCard key={villa.id} villa={villa} compact nav={nav} onDetail={(v) => { nav("locations"); }} />)}
  </div>
  <div style={{ textAlign:"center", marginTop:32 }}>
  <button className="btn-primary" onClick={() => nav("locations")}>Voir toutes nos locations</button>
@@ -961,11 +820,11 @@ function HomePage({ villas, reviews, nav, searchFilters, setSearchFilters }) {
 }
 
 // ══════════════════════════════ VILLA CARD ════════════════════════════════════
-function VillaCard({ villa, compact, nav, onBook }) {
+function VillaCard({ villa, compact, nav, onBook, onDetail }) {
  const [imgIdx, setImgIdx] = useState(0);
  return (
  <div className="card" style={{ borderRadius:16 }}>
- <div style={{ position:"relative", height:220, overflow:"hidden" }}>
+ <div style={{ position:"relative", height:220, overflow:"hidden", cursor:"pointer" }} onClick={() => onDetail && onDetail(villa)}>
  <img src={villa.photos[imgIdx]} alt={villa.name} style={{ width:"100%", height:"100%", objectFit:"cover", transition:".4s" }} />
  {villa.photos.length > 1 && (
  <div style={{ position:"absolute", bottom:10, left:"50%", transform:"translateX(-50%)", display:"flex", gap:6 }}>
@@ -1021,8 +880,109 @@ function VillaCard({ villa, compact, nav, onBook }) {
  );
 }
 
+
+// ══════════════════════════════ VILLA DETAIL PAGE ════════════════════════════
+function VillaDetailPage({ villa, nav, currentUser, showToast, reservations, setReservations, saveReservationToDB }) {
+ const [currentPhoto, setCurrentPhoto] = useState(0);
+ const [showBook, setShowBook] = useState(false);
+
+ if (!villa) { nav("locations"); return null; }
+
+ return (
+ <div style={{ maxWidth:900, margin:"0 auto", padding:"24px 16px" }}>
+ {/* Bouton retour */}
+ <button onClick={() => nav("locations")} style={{ background:"none", border:"none", color:"#F28C38", fontWeight:600, fontSize:15, cursor:"pointer", marginBottom:20, display:"flex", alignItems:"center", gap:6 }}>
+ ← Retour aux locations
+ </button>
+
+ {/* Galerie photos */}
+ <div style={{ position:"relative", borderRadius:20, overflow:"hidden", marginBottom:24, height:320 }}>
+ <img src={villa.photos[currentPhoto]} alt={villa.name} style={{ width:"100%", height:"100%", objectFit:"cover" }} />
+ {villa.photos.length > 1 && (
+ <div style={{ position:"absolute", bottom:16, left:"50%", transform:"translateX(-50%)", display:"flex", gap:8 }}>
+ {villa.photos.map((_, i) => (
+ <button key={i} onClick={() => setCurrentPhoto(i)} style={{ width:i===currentPhoto?24:10, height:10, borderRadius:5, border:"none", background:i===currentPhoto?"#F28C38":"rgba(255,255,255,.7)", cursor:"pointer", transition:".3s", padding:0 }} />
+ ))}
+ </div>
+ )}
+ <div style={{ position:"absolute", top:16, right:16 }}>
+ <span style={{ background: villa.available ? "#38a169" : "#e53e3e", color:"#fff", padding:"6px 14px", borderRadius:20, fontSize:13, fontWeight:600 }}>
+ {villa.available ? "✓ Disponible" : "Indisponible"}
+ </span>
+ </div>
+ </div>
+
+ {/* Miniatures */}
+ {villa.photos.length > 1 && (
+ <div style={{ display:"flex", gap:10, marginBottom:24, overflowX:"auto" }}>
+ {villa.photos.map((photo, i) => (
+ <img key={i} src={photo} alt="" onClick={() => setCurrentPhoto(i)} style={{ width:80, height:60, objectFit:"cover", borderRadius:10, cursor:"pointer", border: i===currentPhoto ? "3px solid #F28C38" : "3px solid transparent", flexShrink:0 }} />
+ ))}
+ </div>
+ )}
+
+ {/* Infos principales */}
+ <div style={{ display:"flex", justifyContent:"space-between", alignItems:"start", flexWrap:"wrap", gap:16, marginBottom:20 }}>
+ <div>
+ <h1 style={{ fontFamily:"Montserrat,sans-serif", fontSize:28, fontWeight:800, color:"#5A2E0C", marginBottom:6 }}>{villa.name}</h1>
+ <p style={{ color:"#888", fontSize:16, display:"flex", alignItems:"center", gap:6 }}>
+ <Icon name="location" size={16} /> {villa.city}
+ </p>
+ </div>
+ <div style={{ textAlign:"right" }}>
+ <p style={{ fontFamily:"Montserrat,sans-serif", fontWeight:900, fontSize:32, color:"#F28C38" }}>{formatPrice(villa.price)}</p>
+ <p style={{ fontSize:13, color:"#aaa" }}>par nuit</p>
+ </div>
+ </div>
+
+ {/* Caractéristiques */}
+ <div style={{ display:"grid", gridTemplateColumns:"repeat(3,1fr)", gap:12, marginBottom:24 }}>
+ {[
+ { icon:"bed", label:"Chambres", val:villa.bedrooms },
+ { icon:"bath", label:"Salles de bain", val:villa.bathrooms },
+ { icon:"users", label:"Capacité", val:villa.capacity + " pers." },
+ ].map((item,i) => (
+ <div key={i} style={{ background:"#fff8f3", borderRadius:12, padding:14, textAlign:"center" }}>
+ <div style={{ color:"#F28C38", marginBottom:6 }}><Icon name={item.icon} size={22} /></div>
+ <p style={{ fontWeight:700, fontSize:16, color:"#5A2E0C" }}>{item.val}</p>
+ <p style={{ fontSize:12, color:"#888" }}>{item.label}</p>
+ </div>
+ ))}
+ </div>
+
+ {/* Équipements */}
+ <div style={{ background:"#fff", borderRadius:16, padding:20, marginBottom:24, boxShadow:"0 2px 12px rgba(0,0,0,.06)" }}>
+ <h3 style={{ fontFamily:"Montserrat,sans-serif", fontWeight:700, color:"#5A2E0C", marginBottom:16 }}>Équipements</h3>
+ <div style={{ display:"flex", flexWrap:"wrap", gap:12 }}>
+ {villa.wifi && <span style={{ display:"flex", alignItems:"center", gap:8, background:"#e8f0fe", color:"#1a56db", padding:"8px 14px", borderRadius:20, fontSize:14, fontWeight:500 }}><Icon name="wifi" size={16} /> Wifi</span>}
+ {villa.ac && <span style={{ display:"flex", alignItems:"center", gap:8, background:"#e0f7fa", color:"#00838f", padding:"8px 14px", borderRadius:20, fontSize:14, fontWeight:500 }}> Climatisation</span>}
+ {villa.pool && <span style={{ display:"flex", alignItems:"center", gap:8, background:"#e8f5e9", color:"#2e7d32", padding:"8px 14px", borderRadius:20, fontSize:14, fontWeight:500 }}><Icon name="pool" size={16} /> Piscine</span>}
+ {villa.parking && <span style={{ display:"flex", alignItems:"center", gap:8, background:"#f3e5f5", color:"#6a1b9a", padding:"8px 14px", borderRadius:20, fontSize:14, fontWeight:500 }}><Icon name="parking" size={16} /> Parking</span>}
+ </div>
+ </div>
+
+ {/* Description */}
+ <div style={{ background:"#fff", borderRadius:16, padding:20, marginBottom:24, boxShadow:"0 2px 12px rgba(0,0,0,.06)" }}>
+ <h3 style={{ fontFamily:"Montserrat,sans-serif", fontWeight:700, color:"#5A2E0C", marginBottom:12 }}>Description</h3>
+ <p style={{ fontSize:15, color:"#555", lineHeight:1.9 }}>{villa.description}</p>
+ </div>
+
+ {/* Bouton réserver */}
+ {villa.available && (
+ <button className="btn-primary" style={{ width:"100%", fontSize:18, padding:"18px", borderRadius:16 }}
+ onClick={() => {
+ if (!currentUser) { showToast("Veuillez vous connecter pour réserver.", "error"); nav("login"); return; }
+ nav("locations");
+ }}>
+ Réserver cette villa
+ </button>
+ )}
+ </div>
+ );
+}
+
 // ══════════════════════════════ LOCATIONS PAGE ════════════════════════════════
-function LocationsPage({ villas, reviews, searchFilters, nav, currentUser, showToast, reservations, setReservations, saveReservationToDB }) {
+function LocationsPage({ villas, reviews, searchFilters, nav, currentUser, showToast, reservations, setReservations, saveReservationToDB, setSelectedVilla }) {
  const [filters, setFilters] = useState({ pool: false, ac: false, wifi: false, parking: false, maxPrice: 1000 });
  const [bookVilla, setBookVilla] = useState(null);
  const [bookForm, setBookForm] = useState({ checkIn:"", checkOut:"", guests:1 });
@@ -1172,7 +1132,7 @@ function LocationsPage({ villas, reviews, searchFilters, nav, currentUser, showT
  <div style={{ display:"grid", gridTemplateColumns:"repeat(auto-fill,minmax(300px,1fr))", gap:24 }}>
  {filtered.map(villa => (
  <div key={villa.id}>
- <VillaCard villa={villa} nav={nav} onBook={openBook} />
+ <VillaCard villa={villa} nav={nav} onBook={openBook} onDetail={(v) => { setSelectedVilla(v); nav("villa-detail"); }} />
  {currentUser && (
  <button onClick={() => setReviewModal(villa)} style={{ width:"100%", marginTop:8, background:"none", border:"1px solid #e2e8f0", borderRadius:10, padding:"8px", fontSize:13, color:"#888", cursor:"pointer" }}>
  Laisser un avis
@@ -1647,27 +1607,31 @@ function RegisterPage({ users, setUsers, nav, showToast, saveUserToDB }) {
 
 
 // ══════════════════════════════ ADMIN PAGE ════════════════════════════════════
-function AdminPage({ villas, setVillas, reservations, setReservations, users, setUsers, showToast, reviews, setReviews }) {
+function AdminPage({ villas, setVillas, reservations, setReservations, users, setUsers, showToast, reviews, setReviews, saveVillaToDB, updateVillaInDB, deleteVillaFromDB }) {
  const [tab, setTab] = useState("villas");
  const [editVilla, setEditVilla] = useState(null);
  const [addForm, setAddForm] = useState(null);
 
  const emptyVilla = { name:"", city:"", price:200, bedrooms:2, bathrooms:1, capacity:4, wifi:true, ac:true, pool:false, parking:true, available:true, description:"", photos:[""] };
 
- const saveVilla = (villa) => {
+ const saveVilla = async (villa) => {
  if (villa.id) {
  setVillas(prev => prev.map(v => v.id === villa.id ? villa : v));
+ await updateVillaInDB(villa);
  showToast("Villa mise à jour !");
  } else {
- setVillas(prev => [...prev, { ...villa, id: Date.now() }]);
+ const newVilla = { ...villa, id: Date.now() };
+ setVillas(prev => [...prev, newVilla]);
+ await saveVillaToDB(newVilla);
  showToast("Villa ajoutée !");
  }
  setEditVilla(null);
  setAddForm(null);
  };
 
- const deleteVilla = (id) => {
+ const deleteVilla = async (id) => {
  setVillas(prev => prev.filter(v => v.id !== id));
+ await deleteVillaFromDB(id);
  showToast("Villa supprimée.");
  };
 
