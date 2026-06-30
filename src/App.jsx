@@ -1948,17 +1948,26 @@ function VillaFormModal({ open, onClose, villa, onSave }) {
  <label style={{ display:"block", width:"100%", background:"linear-gradient(135deg,#fff8f3,#fff3e0)", border:"2px dashed #F28C38", borderRadius:14, padding:"20px", textAlign:"center", cursor:"pointer", marginBottom:12 }}>
  <input type="file" accept="image/*" multiple style={{ display:"none" }} onChange={e => {
  const files = Array.from(e.target.files);
- files.forEach(file => {
+ if (files.length === 0) return;
+ const existingPhotos = (form.photos || []).filter(p => p);
+ const newPhotos = [];
+ let loaded = 0;
+ files.forEach((file, index) => {
  const reader = new FileReader();
  reader.onload = (ev) => {
- f("photos", [...(form.photos || []).filter(p => p), ev.target.result]);
+ newPhotos[index] = ev.target.result;
+ loaded++;
+ if (loaded === files.length) {
+ // Toutes les photos chargées — on les ajoute toutes en une fois
+ f("photos", [...existingPhotos, ...newPhotos.filter(p => p)]);
+ }
  };
  reader.readAsDataURL(file);
  });
  }} />
  <div style={{ fontSize:32, marginBottom:8 }}> </div>
  <p style={{ fontWeight:700, color:"#F28C38", fontSize:15, marginBottom:4 }}>Appuyez pour choisir des photos</p>
- <p style={{ fontSize:12, color:"#888" }}>Depuis votre galerie · Plusieurs photos possibles</p>
+ <p style={{ fontSize:12, color:"#888" }}>Sélectionnez plusieurs photos à la fois </p>
  </label>
 
  {/* Ou par URL */}
