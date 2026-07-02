@@ -326,6 +326,9 @@ export default function App() {
  if (localVillas) {
  const parsed = JSON.parse(localVillas);
  if (parsed.length > 0) setVillas(parsed);
+ } else {
+ // Première visite : sauvegarder les villas initiales dans localStorage
+ localStorage.setItem("vs_villas", JSON.stringify(INITIAL_VILLAS));
  }
  if (localUsers) {
  const parsed = JSON.parse(localUsers);
@@ -341,14 +344,15 @@ export default function App() {
  }
  } catch(e) { console.error("localStorage error:", e); }
 
- // Puis synchroniser avec Supabase
+ // Puis synchroniser avec Supabase (si la table existe)
  if (!supabaseReady()) { setDbLoading(false); return; }
  try {
- const { data: dbVillas } = await sb.from("villas").select("*");
- if (dbVillas && dbVillas.length > 0) {
+ const { data: dbVillas, error: villasErr } = await sb.from("villas").select("*");
+ if (!villasErr && dbVillas && dbVillas.length > 0) {
  setVillas(dbVillas);
  localStorage.setItem("vs_villas", JSON.stringify(dbVillas));
  }
+ // Si erreur (table inexistante), on garde simplement les données localStorage déjà chargées
  const { data: dbUsers } = await sb.from("users").select("*");
  if (dbUsers && dbUsers.length > 0) {
  const merged = [...INITIAL_USERS];
@@ -604,7 +608,7 @@ export default function App() {
  {page === "locations" && <LocationsPage villas={villas} reviews={reviews} searchFilters={searchFilters} nav={nav} currentUser={currentUser} showToast={showToast} reservations={reservations} setReservations={setReservations} saveReservationToDB={saveReservationToDB} setSelectedVilla={setSelectedVilla} />}
  {page === "reservations" && currentUser && <ReservationsPage reservations={reservations.filter(r => currentUser.role === "admin" || r.userId === currentUser.id)} currentUser={currentUser} setReservations={setReservations} showToast={showToast} updateReservationInDB={updateReservationInDB} />}
  {page === "contact" && <ContactPage showToast={showToast} />}
- {page === "login" && <LoginPage users={users} setCurrentUser={setCurrentUser} nav={nav} showToast={showToast} />}
+ {page === "login" && <LoginPage users={users} setUsers={setUsers} setCurrentUser={setCurrentUser} nav={nav} showToast={showToast} />}
  {page === "register" && <RegisterPage users={users} setUsers={setUsers} nav={nav} showToast={showToast} saveUserToDB={saveUserToDB} />}
  {page === "admin" && currentUser?.role === "admin" && <AdminPage villas={villas} setVillas={setVillas} reservations={reservations} setReservations={setReservations} users={users} setUsers={setUsers} showToast={showToast} reviews={reviews} setReviews={setReviews} saveVillaToDB={saveVillaToDB} updateVillaInDB={updateVillaInDB} deleteVillaFromDB={deleteVillaFromDB} />}
 
@@ -1495,9 +1499,15 @@ function ContactPage({ showToast }) {
 }
 
 // ══════════════════════════════ LOGIN / REGISTER ══════════════════════════════
-function LoginPage({ users, setCurrentUser, nav, showToast }) {
+function LoginPage({ users, setUsers, setCurrentUser, nav, showToast }) {
  const [form, setForm] = useState({ email:"", password:"" });
  const [error, setError] = useState("");
+ const [showForgot, setShowForgot] = useState(false);
+ const [forgotEmail, setForgotEmail] = useState("");
+ const [forgotStep, setForgotStep] = useState("email"); // email | reset
+ const [newPassword, setNewPassword] = useState("");
+ const [forgotError, setForgotError] = useState("");
+
  const submit = () => {
  const user = users.find(u => u.email === form.email && u.password === form.password);
  if (!user) { setError("Email ou mot de passe incorrect."); return; }
@@ -1506,6 +1516,66 @@ function LoginPage({ users, setCurrentUser, nav, showToast }) {
  showToast(`Bienvenue, ${user.name} !`);
  nav(user.role === "admin" ? "admin" : "home");
  };
+
+ const handleForgotEmail = () => {
+ const user = users.find(u => u.email === forgotEmail);
+ if (!user) { setForgotError("Aucun compte trouvé avec cet email."); return; }
+ setForgotError("");
+ setForgotStep("reset");
+ };
+
+ const handleResetPassword = () => {
+ if (!newPassword || newPassword.length < 6) { setForgotError("Le mot de passe doit contenir au moins 6 caractères."); return; }
+ setUsers(prev => prev.map(u => u.email === forgotEmail ? {...u, password: newPassword} : u));
+ setForgotError("");
+ showToast(" Mot de passe réinitialisé ! Vous pouvez vous connecter.");
+ setShowForgot(false);
+ setForgotStep("email");
+ setForgotEmail("");
+ setNewPassword("");
+ };
+
+ if (showForgot) {
+ return (
+ <div style={{ minHeight:"80vh", display:"flex", alignItems:"center", justifyContent:"center", padding:24 }}>
+ <div style={{ background:"#fff", borderRadius:20, padding:40, width:"100%", maxWidth:420, boxShadow:"0 8px 40px rgba(0,0,0,.1)" }}>
+ <div style={{ textAlign:"center", marginBottom:28 }}>
+ <div style={{ width:56, height:56, background:"linear-gradient(135deg,#F28C38,#5A2E0C)", borderRadius:14, display:"flex", alignItems:"center", justifyContent:"center", margin:"0 auto 14px", fontSize:24 }}> </div>
+ <h2 style={{ fontFamily:"Montserrat,sans-serif", fontWeight:800, color:"#5A2E0C", fontSize:22 }}>Mot de passe oublié</h2>
+ <p style={{ color:"#888", fontSize:14, marginTop:4 }}>
+ {forgotStep === "email" ? "Entrez votre email pour réinitialiser votre mot de passe" : "Choisissez un nouveau mot de passe"}
+ </p>
+ </div>
+ {forgotError && <div style={{ background:"#fde8e8", color:"#c53030", padding:"10px 14px", borderRadius:10, fontSize:13, marginBottom:14 }}>{forgotError}</div>}
+
+ {forgotStep === "email" && (
+ <>
+ <div style={{ marginBottom:20 }}>
+ <label style={{ fontSize:13, fontWeight:600, color:"#5A2E0C", display:"block", marginBottom:6 }}>Email</label>
+ <input className="input" type="email" value={forgotEmail} onChange={e => setForgotEmail(e.target.value)} placeholder="votre@email.com" onKeyDown={e => e.key==="Enter" && handleForgotEmail()} />
+ </div>
+ <button className="btn-primary" style={{ width:"100%", marginBottom:14 }} onClick={handleForgotEmail}>Continuer</button>
+ </>
+ )}
+
+ {forgotStep === "reset" && (
+ <>
+ <div style={{ marginBottom:20 }}>
+ <label style={{ fontSize:13, fontWeight:600, color:"#5A2E0C", display:"block", marginBottom:6 }}>Nouveau mot de passe</label>
+ <input className="input" type="password" value={newPassword} onChange={e => setNewPassword(e.target.value)} placeholder="••••••••" onKeyDown={e => e.key==="Enter" && handleResetPassword()} />
+ </div>
+ <button className="btn-primary" style={{ width:"100%", marginBottom:14 }} onClick={handleResetPassword}>Réinitialiser le mot de passe</button>
+ </>
+ )}
+
+ <p style={{ textAlign:"center", fontSize:13, color:"#888" }}>
+ <button onClick={() => { setShowForgot(false); setForgotStep("email"); setForgotError(""); }} style={{ background:"none", border:"none", color:"#F28C38", fontWeight:600, cursor:"pointer" }}>← Retour à la connexion</button>
+ </p>
+ </div>
+ </div>
+ );
+ }
+
  return (
  <div style={{ minHeight:"80vh", display:"flex", alignItems:"center", justifyContent:"center", padding:24 }}>
  <div style={{ background:"#fff", borderRadius:20, padding:40, width:"100%", maxWidth:420, boxShadow:"0 8px 40px rgba(0,0,0,.1)" }}>
@@ -1521,19 +1591,17 @@ function LoginPage({ users, setCurrentUser, nav, showToast }) {
  <label style={{ fontSize:13, fontWeight:600, color:"#5A2E0C", display:"block", marginBottom:6 }}>Email</label>
  <input className="input" type="email" value={form.email} onChange={e => setForm(p => ({...p, email:e.target.value}))} placeholder="votre@email.com" />
  </div>
- <div style={{ marginBottom:20 }}>
+ <div style={{ marginBottom:10 }}>
  <label style={{ fontSize:13, fontWeight:600, color:"#5A2E0C", display:"block", marginBottom:6 }}>Mot de passe</label>
  <input className="input" type="password" value={form.password} onChange={e => setForm(p => ({...p, password:e.target.value}))} placeholder="••••••••" onKeyDown={e => e.key==="Enter" && submit()} />
  </div>
+ <p style={{ textAlign:"right", marginBottom:14 }}>
+ <button onClick={() => setShowForgot(true)} style={{ background:"none", border:"none", color:"#F28C38", fontSize:13, fontWeight:600, cursor:"pointer" }}>Mot de passe oublié ?</button>
+ </p>
  <button className="btn-primary" style={{ width:"100%", marginBottom:14 }} onClick={submit}>Se connecter</button>
  <p style={{ textAlign:"center", fontSize:13, color:"#888" }}>
  Pas encore de compte ? <button onClick={() => nav("register")} style={{ background:"none", border:"none", color:"#F28C38", fontWeight:600, cursor:"pointer" }}>S'inscrire</button>
  </p>
- <div style={{ background:"#f8f8f8", borderRadius:10, padding:12, marginTop:16, fontSize:12, color:"#888" }}>
- <strong>Démo :</strong><br/>
- Admin : admin@villaselect.com / admin123<br/>
- Utilisateur : user@demo.com / demo123
- </div>
  </div>
  </div>
  );
